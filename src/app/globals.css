@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #000000;
+  --muted: rgba(0, 0, 0, 0.45);
+  --muted-strong: rgba(0, 0, 0, 0.65);
+  --border: rgba(0, 0, 0, 0.1);
+  --surface-dark: #0a0908;
+  --surface-warm: #f5f3ee;
+  --accent-cream: #e8e2d6;
+  --accent-green: #00d492;
+  --cursor-stroke: #ffffff;
+  --cursor-fill: rgba(232, 226, 214, 0.14);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-strong: var(--muted-strong);
+  --color-border: var(--border);
+  --color-surface-dark: var(--surface-dark);
+  --color-surface-warm: var(--surface-warm);
+  --color-accent-cream: var(--accent-cream);
+  --color-accent-green: var(--accent-green);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-instrument);
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+::selection {
+  background: rgba(0, 0, 0, 0.12);
+}
+
+@keyframes card-grid-drift {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 48px 48px;
+  }
+}
+
+.card-grid-drift {
+  animation: card-grid-drift 18s linear infinite;
+}
+
+.cursor-dot {
+  will-change: transform;
+}
+
+.service-page {
+  --service-dark: #111111;
+  --service-pink: #ff5c8d;
+  --service-purple: #9d66ff;
+}
+
+@keyframes promo-gradient-shift {
+  0%,
+  100% {
+    transform: translate(0%, 0%) scale(1.1);
+  }
+  33% {
+    transform: translate(8%, -6%) scale(1.15);
+  }
+  66% {
+    transform: translate(-5%, 8%) scale(1.08);
+  }
+}
+
+.promo-gradient-shift {
+  background: radial-gradient(
+      circle at 30% 20%,
+      rgba(255, 255, 255, 0.55) 0%,
+      transparent 45%
+    ),
+    radial-gradient(circle at 75% 80%, rgba(255, 255, 255, 0.35) 0%, transparent 50%);
+  animation: promo-gradient-shift 14s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .promo-gradient-shift {
+    animation: none;
+  }
+}
+
+.promo-shape-3d {
+  perspective: 600px;
+  transform-style: preserve-3d;
+}
+
+@keyframes promo-shape-spin {
+  0% {
+    transform: rotateX(12deg) rotateY(0deg) translateY(0);
+  }
+  50% {
+    transform: rotateX(18deg) rotateY(180deg) translateY(-8px);
+  }
+  100% {
+    transform: rotateX(12deg) rotateY(360deg) translateY(0);
+  }
+}
+
+.promo-shape-spin-slow {
+  animation: promo-shape-spin 16s ease-in-out infinite;
+}
+
+.promo-shape-spin-reverse {
+  animation: promo-shape-spin 20s ease-in-out infinite reverse;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .promo-shape-spin-slow,
+  .promo-shape-spin-reverse {
+    animation: none;
+  }
+}
